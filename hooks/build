@@ -5,7 +5,7 @@ if [ "${DOCKER_TAG}" == "stable-ns" ]; then
 elif [ "${DOCKER_TAG}" == "latest-ns" ]; then
 	BASE_IMAGE_FROM="linuxserver/tvheadend:latest"
 else
-	BASE_IMAGE_FROM="wiserain/tvhbase:${DOCKER_TAG}"
+	BASE_IMAGE_FROM="kyusang/tvhbase:${DOCKER_TAG}"
 fi
 
 docker build \
