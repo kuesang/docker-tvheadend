@@ -169,6 +169,7 @@ RUN \
 	--mandir=/usr/share/man \
 	--prefix=/usr \
 	--sysconfdir=/config && \
+ sed -i "/\(switch (dmc->dmc_fe_type) {\)/a\    case DVB_TYPE_ATSC_T:\n        switch\(dmc->dmc_fe_modulation\) \{\n            case DVB_MOD_VSB_8:\n                snprintf\(channel_buf, sizeof\(channel_buf\), \"auto6t:%u\", dmc->dmc_fe_freq\);\n                break;\n            default:\n                snprintf\(channel_buf, sizeof\(channel_buf\), \"auto:%u\", dmc->dmc_fe_freq\);\n                break;\n        \}\n        break;" src/input/mpegts/tvhdhomerun/tvhdhomerun_frontend.c && \
  make && \
  make DESTDIR=/tmp/tvheadend-build install
 
